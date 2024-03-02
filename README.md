@@ -12,7 +12,7 @@ MIDI Splitter Py is a command-line tool designed to split MIDI files into separa
 
 ## Installation
 
-Before running MIDI Splitter Lite, you need to install the required Python libraries. Ensure you have Python 3.6 or later installed and install the dependencies:
+Before running MIDI Splitter Lite, you need to install the required Python libraries:
 
 ```
 pip install -r requirements.txt
@@ -24,6 +24,7 @@ To use MIDI Splitter Lite, run the script from the command line, providing the p
 ```
 python midi_splitter.py [input MIDI files or directories] -o [output directory] [options]
 ```
+
 ## Options
 - -o, --output_path: Specify the output directory for the split MIDI files (required).
 - -d, --duplicate-first-track: Duplicate the first track onto all tracks.
