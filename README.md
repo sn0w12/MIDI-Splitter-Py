@@ -1,6 +1,6 @@
-# MIDI Splitter Lite
+# MIDI Splitter Py
 
-MIDI Splitter Lite is a command-line tool designed to split MIDI files into separate tracks, processing multiple files or directories concurrently for efficiency. It offers features such as duplicating the first track across all tracks, reading and displaying track and instrument names, and removing empty tracks.
+MIDI Splitter Py is a command-line tool designed to split MIDI files into separate tracks, processing multiple files or directories concurrently for efficiency. It offers features such as duplicating the first track across all tracks, reading and displaying track and instrument names, and removing empty tracks.
 
 ## Features
 
