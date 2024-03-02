@@ -120,7 +120,7 @@ def process_files(midi_files, args):
         thread.join()
 
 def main():
-    parser = argparse.ArgumentParser(description='MIDI Splitter Lite with Threading and Progress Bar')
+    parser = argparse.ArgumentParser(description='MIDI Splitter Py with Threading and Progress Bar')
     parser.add_argument('input', type=str, nargs='+', help='Path to MIDI files or directories to process.')
     parser.add_argument('-o', '--output_path', required=True, help='Output directory for the split MIDI files.')
     parser.add_argument('-d', '--duplicate-first-track', action='store_true', help='Duplicate the first track onto all tracks.')
