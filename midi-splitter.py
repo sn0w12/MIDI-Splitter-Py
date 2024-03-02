@@ -73,6 +73,8 @@ def is_track_empty(track):
 def process_midi_file(midi_file, output_path, args):
     try:
         midi = MidiFile(midi_file)
+        if args.verbose:
+            print(f"Successfully loaded MIDI file: {midi_file}")
     except IOError:
         print(f"Error: Could not open MIDI file: {midi_file}")
         return
@@ -82,11 +84,17 @@ def process_midi_file(midi_file, output_path, args):
 
     base_name = os.path.splitext(os.path.basename(midi_file))[0]
     specific_output_path = os.path.join(output_path, sanitize_filename(base_name))
-    if not os.path.exists(specific_output_path):
+    if not os.path.exists(specific_output_path) and args.verbose:
+        os.makedirs(specific_output_path)
+        print(f"Created directory: {specific_output_path}")
+    elif not os.path.exists(specific_output_path):
         os.makedirs(specific_output_path)
 
     for i, track in enumerate(midi.tracks):
-        if args.remove_empty_tracks and is_track_empty(track):
+        if args.remove_empty_tracks and is_track_empty(track) and args.verbose:
+            print(f"Skipping empty track: Track {i+1}")
+            continue
+        elif args.remove_empty_tracks and is_track_empty(track):
             continue
 
         new_midi = MidiFile()
@@ -110,6 +118,9 @@ def process_midi_file(midi_file, output_path, args):
         file_path = os.path.join(specific_output_path, filename)
         new_midi.save(file_path)
 
+        if args.verbose:
+            print(f"Track saved: {file_path} - Instrument: {instrument_name}")
+
 def process_files(midi_files, args):
     threads = []
     for midi_file in midi_files:
@@ -127,6 +138,7 @@ def main():
     parser.add_argument('-t', '--track-names', action='store_true', help='Read and display track names.')
     parser.add_argument('-i', '--instrument-names', action='store_true', help='Read and display instrument names.')
     parser.add_argument('-r', '--remove-empty-tracks', action='store_true', help='Remove tracks that do not contain meaningful MIDI events.')
+    parser.add_argument('-v', '--verbose', action='store_true', help='Enable verbose output.')
 
     args = parser.parse_args()
 

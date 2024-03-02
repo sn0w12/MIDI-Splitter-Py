@@ -31,6 +31,7 @@ python midi_splitter.py [input MIDI files or directories] -o [output directory] 
 - -t, --track-names: Read and display track names.
 - -i, --instrument-names: Read and display instrument names.
 - -r, --remove-empty-tracks: Remove tracks that do not contain meaningful MIDI events.
+- -v, --verbose: Enable verbose output.
 ### Example
 
 ```
